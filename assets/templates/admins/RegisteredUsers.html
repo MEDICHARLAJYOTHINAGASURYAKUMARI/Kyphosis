@@ -1,0 +1,126 @@
+{% extends 'admins/admin_base.html' %}
+{% block contents %}
+
+<!-- Light Blue Header Section -->
+<section id="intro" class="top-section">
+    <div class="container">
+        <div class="header_box text-center">
+            <h2 style="color: #033c4e; font-weight: bold;">View Registered User Details</h2>
+        </div>
+    </div>
+</section>
+
+<!-- Table Section -->
+<div class="container table-container">
+    <table class="table table-bordered text-center">
+        <thead class="thead-custom">
+            <tr>
+                <th>S.No</th>
+                <th>Name</th>
+                <th>Login ID</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Locality</th>
+                <th>Status</th>
+                <th>Activate</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in data %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.loginid }}</td>
+                <td>{{ i.mobile }}</td>
+                <td>{{ i.email }}</td>
+                <td>{{ i.locality }}</td>
+                <td><strong>{{ i.status }}</strong></td>
+                <td>
+                    {% if i.status == 'waiting' %}
+                    <a class="btn btn-custom" href="/AdminActivaUsers/?uid={{ i.id }}">Activate</a>
+                    {% else %}
+                    <span class="badge badge-active">Activated</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <a class="btn btn-delete" href="/AdminDeleteUser/?uid={{ i.id }}" onclick="return confirm('Are you sure you want to delete this user?');">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Custom Styling -->
+<style>
+    .top-section {
+        background-color: #d4f0f7;
+        padding: 30px;
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 4px solid #a5dbe8;
+    }
+
+    .table-container {
+        background-color: #e9f7fb;
+        padding: 36px;
+        border-radius: 12px;
+        box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.08);
+        margin-bottom: 50px;
+    }
+
+    .thead-custom {
+        background-color: #a5dbe8;
+        color: #033c4e;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    table tr td {
+        font-size: 16px;
+        color: #033c4e;
+        vertical-align: middle;
+    }
+
+    .btn-custom {
+        background-color: #7dc9de;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background-color: #5bb3c7;
+    }
+
+    .btn-delete {
+        background-color: #f28585;
+        color: white !important;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        font-size: 14px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-delete:hover {
+        background-color: #db5a5a;
+    }
+
+    .badge-active {
+        background-color: #7dc9de;
+        padding: 6px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+        color: white;
+    }
+</style>
+
+{% endblock %}

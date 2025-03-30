@@ -1,0 +1,136 @@
+{%extends 'users/user_base.html'%}
+{%load static%}
+{%block contents%}
+<style>
+    table {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    table td, table th, input {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    table tr:hover {
+        background-color: #ddd;
+    }
+
+    table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+<section id="aboutUs"><!--Aboutus-->
+    <div class="inner_wrapper">
+        <div class="container">
+            <div class="inner_section">
+                <div class="row">
+                    <div class=" col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-right">
+                        <img src="{%static 'img/about-img.jpg'%}" class="img-circle delay-03s animated wow zoomIn"
+                             alt=""></div>
+                    <div class=" col-lg-7 col-md-7 col-sm-7 col-xs-12 pull-left">
+                        <div class=" delay-01s animated fadeInDown wow animated">
+                            <p>
+                            <h2>Machine Learning Prediction Form</h2>
+                            <form action="{%url 'UserPredictions'%}" method="post">
+                                {%csrf_token%}
+                                <table border="1" class="dataframe">
+                                    <thead>
+                                    <tr style="text-align: right;">
+                                        <th>Lable</th>
+                                        <th>Input</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>Age</td>
+                                        <td><input type="number" min="10" max="100" step="1" name="age" required>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td><select name="gender" id="" required>
+                                            <option value="">--Select Gender---</option>
+                                            <option value="0">Female</option>
+                                            <option value="1">Male</option>
+                                        </select>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Pulse</td>
+                                        <td><input type="number" min="50" max="150" step="1" name="pulse" required>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Systolic Blood Pressure</td>
+                                        <td><input type="number" min="80" max="150" step="0.1" name="systolicBloodPressure" required>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>Diastolic Blood Pressure</td>
+                                        <td><input type="number" min="80" max="300" step="1" name="diastolicBloodPressure" required>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>RespiratoryRate</td>
+                                        <td><input type="number" min="8" max="40" step="1" name="respiratoryRate" required>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>SPO2</td>
+                                        <td><input type="number" min="90" max="99" step="0.1" name="spo2" required>
+                                        </td>
+
+                                    </tr>
+                                     <tr>
+                                        <td>RandomBloodSugar</td>
+                                        <td><input type="number" min="80" max="300" step="1" name="randomBloodSugar" required>
+                                        </td>
+
+                                    </tr>
+                                     <tr>
+                                        <td>Temperature</td>
+                                        <td><input type="number" min="96" max="108" step="0.1" name="temperature" required>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td><h3>The Emergency: {{result}}</h3></td>
+                                        <td><input type="submit" value="submit"></td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+
+                            </center>
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{%endblock%}

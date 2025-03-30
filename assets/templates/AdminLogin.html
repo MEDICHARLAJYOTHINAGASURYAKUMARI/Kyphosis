@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+
+<!-- Set background color to light blue -->
+<style>
+    .top_cont_outer {
+        background-color: #ADD8E6; /* Light Blue */
+        padding: 30px 0;
+    }
+
+    .top_left_cont h2 {
+        color: #1c1c1c;
+        font-weight: bold;
+    }
+
+    .form-group label {
+        color: #000080; /* Optional: dark blue labels */
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .btn-dark {
+        background-color: #003366;
+        border: none;
+    }
+
+    .btn-dark:hover {
+        background-color: #002244;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+    }
+</style>
+
+<!--Hero_Section-->
+<section id="hero_section" class="top_cont_outer">
+    <div class="hero_wrapper">
+        <div class="container">
+            <div class="hero_section">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-7">
+                        <div class="top_left_cont zoomIn wow animated">
+                            <h2 class="row justify-content-center text-dark">
+                                <i class="fa fa-sign-in-alt" style="color: #B8C6CC; pointer-events: none;">
+                                    &nbsp;Admin Log In
+                                </i>
+                            </h2>
+                            <form action="{% url 'AdminLoginCheck' %}" method="post" novalidate>
+                                {% csrf_token %}
+                                <div id="div_id_username" class="form-group">
+                                    <label for="id_username" class="requiredField">
+                                        Username<span class="asteriskField">*</span>
+                                    </label>
+                                    <div>
+                                        <input type="text" name="loginid" required autofocus autocapitalize="none"
+                                               autocomplete="username" maxlength="150"
+                                               class="textinput textInput form-control" id="id_username">
+                                    </div>
+                                </div>
+                                <div id="div_id_password" class="form-group">
+                                    <label for="id_password" class="requiredField">
+                                        Password<span class="asteriskField">*</span>
+                                    </label>
+                                    <div>
+                                        <input type="password" name="pswd" required autocomplete="current-password"
+                                               class="textinput textInput form-control" id="id_password">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-dark mb-2">Login</button>
+                            </form>
+
+                            {% if messages %}
+                                {% for message in messages %}
+                                    <font color='red'>{{ message }}</font>
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-sm-5">
+                        <img src="{% static 'img/peddanna.jpg' %}" class="zoomIn wow animated" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Hero_Section-->
+
+{% endblock %}

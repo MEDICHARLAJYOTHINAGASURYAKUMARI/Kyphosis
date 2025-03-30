@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block contents %}
+<!--Hero_Section-->
+<style>
+    .top_cont_outer {
+        background-color: #ADD8E6; /* Light Blue */
+    }
+    .home-para{
+        color: #2f4f4f !important;
+        font-size: 20px !important;
+    }
+    .classci{
+        color: #FF7F50 !important;
+    }
+</style>
+
+<section id="hero_section" class="top_cont_outer">
+    <div class="hero_wrapper">
+        <div class="container">
+            <div class="hero_section">
+                <div class="row" style="display: flex; align-items: center; justify-content: space-between;">
+                    <div class="col-lg-5 col-sm-7" style="flex: 1; padding-right: 30px;">
+                        <div class="top_left_cont zoomIn wow animated">
+                            <h2>Kyphosis Disease <strong class="classci"> Classification</strong> Using Machine Learning</h2>
+                            <p class="home-para">
+                                Kyphosis disease classification involves identifying and categorizing instances of kyphosis, a spinal condition characterized by an abnormal curvature of the upper spine, resulting in a hunchbacked appearance. Classification models in this context are trained to differentiate between patients with and without kyphosis based on various clinical and demographic features. Accurate classification can aid in early diagnosis and appropriate treatment planning. The process typically involves collecting a dataset with relevant features, applying machine learning algorithms to train the model, and evaluating its performance. Successful classification models can significantly enhance the accuracy of diagnosis and contribute to better patient outcomes in managing kyphosis.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-7" style="flex: 1; display: flex; justify-content: center; padding-left: 30px;">
+                        <img src="{% static 'img/peddanna.jpg' %}" class="zoomIn wow animated" alt="" style="max-width: 100%; height: auto; border-radius: 10px; margin-left: 30px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--Hero_Section-->
+{% endblock %}

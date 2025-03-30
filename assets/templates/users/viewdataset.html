@@ -1,0 +1,96 @@
+{% load static %}
+{% block contents %}
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('table').DataTable({
+            "pageLength": 500,
+            "searching": false
+        });
+    });
+</script>
+
+<!-- Light blue bordered header section -->
+<header id="header_wrapper" class="top-section">
+    <div class="container">
+        <div class="header_box">
+            <div class="logo"><a href="#"><h2>Kyphosis Disease Dataset</h2></a></div>
+
+            <!-- Navigation as styled buttons -->
+            <div class="top-buttons">
+                <a href="{% url 'AdminHome' %}" class="btn">Home</a>
+                <a href="{% url 'index' %}" class="btn">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Centering the dataset table with increased size -->
+<div class="table-container">
+    <pre>
+        {{ data|safe }}
+    </pre>
+</div>
+
+<!-- Apply styling -->
+<style>
+    /* Header / Top section with light blue border */
+    .top-section {
+        background-color: #8edaec;
+        padding: 30px;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .top-section h2 {
+        color: #030d0f;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Button-style links */
+    .top-buttons {
+        margin-top: 10px;
+    }
+
+    .top-buttons .btn {
+        background-color: #72b7c8;
+        color: white !important;
+        padding: 10px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px;
+        margin: 5px;
+        text-decoration: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .top-buttons .btn:hover {
+        background-color: #5ca6b5;
+    }
+
+    /* Dataset table container */
+    .table-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        margin: 50px auto;
+        background-color: #f9f9f9;
+        padding: 36px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        overflow: auto;
+    }
+
+    pre {
+        font-size: 28px;
+        text-align: center;
+        white-space: pre-wrap;
+    }
+</style>
+
+{% endblock %}

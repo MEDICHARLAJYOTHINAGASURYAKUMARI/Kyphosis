@@ -1,0 +1,63 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+    <title>Kyphosis Disease Classification Using MachineLearning</title>
+    <link rel="icon" href="{%static 'favicon.png'%}" type="image/png">
+    <link href="{%static 'css/bootstrap.min.css'%}" rel="stylesheet" type="text/css">
+    <link href="{%static 'css/style.css'%}" rel="stylesheet" type="text/css">
+    <link href="{%static 'css/font-awesome.css'%}" rel="stylesheet" type="text/css">
+    <link href="{%static 'css/animate.css'%}" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+
+<!--Header_section-->
+<header id="header_wrapper">
+    <div class="container">
+        <div class="header_box">
+            <div class="logo"><a href="#"><h2>Kyphosis Disease</h2></a></div>
+            <nav class="navbar navbar-inverse" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse"
+                            data-target="#main-nav"><span class="sr-only">Toggle navigation</span> <span
+                            class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div id="main-nav" class="collapse navbar-collapse navStyle">
+                    <ul class="nav navbar-nav" id="mainNav">
+                        <li><a href="{%url 'AdminHome'%}">Home</a></li>
+                        <li><a href="{%url 'DatasetView'%}">DatasetView</a></li>
+                        <li><a href="{%url 'ada'%}">Adaboosting</a></li>
+                        <li><a href="{%url 'xg'%}">Xgboosting</a></li>
+                        <li><a href="{%url 'gradent'%}">Gradientboosting</a></li>
+                        <li><a href="{%url 'compare_models'%}">compare_models</a></li>
+                        <li><a href="{%url 'ViewRegisteredUsers'%}">Users</a></li>
+                        <li><a href="{%url 'index'%}">Log out</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+<!--Header_section-->
+{%block contents%}
+
+<!--Aboutus-->
+{%endblock%}
+<!--Footer-->
+
+
+<script type="text/javascript" src="{%static 'js/jquery-1.11.0.min.js'%}"></script>
+<script type="text/javascript" src="{%static 'js/bootstrap.min.js'%}"></script>
+<script type="text/javascript" src="{%static 'js/jquery-scrolltofixed.js'%}"></script>
+<script type="text/javascript" src="{%static 'js/jquery.nav.js'%}"></script>
+<script type="text/javascript" src="{%static 'js/jquery.easing.1.3.js'%}"></script>
+<script type="text/javascript" src="{%static 'js/jquery.isotope.js'%}"></script>
+<script type="text/javascript" src="{%static 'js/wow.js'%}"></script>
+<script type="text/javascript" src="{%static 'js/custom.js'%}"></script>
+
+</body>
+</html>

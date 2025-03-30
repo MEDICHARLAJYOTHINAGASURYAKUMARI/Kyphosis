@@ -1,0 +1,19 @@
+{% extends 'users/Ada.html' %}
+{% block contents %}
+<h2 style="text-align:center; margin-top:30px;">Model Comparison Metrics</h2>
+
+
+<div style="text-align:center;">
+    <h3>Accuracy Graph</h3>
+    <img src="{{ acc_graph_url }}" alt="Accuracy Graph" style="max-width: 90%; height:auto; border:2px solid #333; border-radius: 10px; margin-bottom: 30px;">
+
+    <h3>Precision Graph</h3>
+    <img src="{{ prec_graph_url }}" alt="Precision Graph" style="max-width: 90%; height:auto; border:2px solid #333; border-radius: 10px; margin-bottom: 30px;">
+
+    <h3>Recall Graph</h3>
+    <img src="{{ recall_graph_url }}" alt="Recall Graph" style="max-width: 90%; height:auto; border:2px solid #333; border-radius: 10px; margin-bottom: 30px;">
+
+    <h3>F1 Score Graph</h3>
+    <img src="{{ f1_graph_url }}" alt="F1 Score Graph" style="max-width: 90%; height:auto; border:2px solid #333; border-radius: 10px;">
+</div>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'users/userbase.html' %}
+{% load static %}
+{% block contents %}
+<style>
+    .top_cont_outer {
+        background-color: #ADD8E6; /* Light Blue */
+        padding: 30px 0;
+    }
+
+    .top_left_cont h2 {
+        color: #1c1c1c;
+        font-weight: bold;
+    }
+
+    .top_left_cont p {
+        color: #000;
+        font-size: 16px;
+        line-height: 1.6;
+    }
+</style>
+
+<!--Hero_Section-->
+<section id="hero_section" class="top_cont_outer">
+    <div class="hero_wrapper">
+        <div class="container">
+            <div class="hero_section">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-7">
+                        <div class="top_left_cont zoomIn wow animated">
+                            <h2>Kyphosis Disease <strong>Classification</strong> Using Machine Learning</h2>
+                            <p>
+                                Kyphosis disease classification involves identifying and categorizing instances of kyphosis, a spinal condition characterized by an abnormal curvature of the upper spine, resulting in a hunchbacked appearance. Classification models in this context are trained to differentiate between patients with and without kyphosis based on various clinical and demographic features. Accurate classification can aid in early diagnosis and appropriate treatment planning. The process typically involves collecting a dataset with relevant features, applying machine learning algorithms to train the model, and evaluating its performance. Successful classification models can significantly enhance the accuracy of diagnosis and contribute to better patient outcomes in managing kyphosis.
+                            </p>
+                            <!--<a href="#service" class="read_more2">Read more</a>-->
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-sm-5">
+                        <!-- <img src="{% static 'img/portfolio_pic7.jpg' %}" class="zoomIn wow animated" alt=""/> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

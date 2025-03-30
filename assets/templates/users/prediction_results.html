@@ -1,0 +1,170 @@
+{% extends 'users/Ada.html' %}
+{% block contents %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyphosis Disease Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            flex-direction: column;
+        }
+
+        /* Top navigation bar */
+        #header_wrapper {
+            background-color: #76edf4;
+            height: 3cm;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-nav {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+
+        .navbar-nav li {
+            margin: 0 15px;
+        }
+
+        .navbar-nav li a {
+            color: white !important;
+            background-color: #76edf4 !important;
+            padding: 10px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+            border: none; /* Removed outline */
+        }
+
+        .navbar-nav li a:hover {
+            background-color: white !important;
+            color: #76edf4 !important;
+        }
+
+        /* Centering the form */
+        .form-container {
+            width: 400px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 5cm;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Result box styling */
+        .result-container {
+            width: 400px;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #e9f7ef;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result {
+            font-size: 24px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Red Top Navigation Bar -->
+    <header id="header_wrapper">
+        <nav>
+            <ul class="navbar-nav">
+                <li><a href="{%url 'AdminHome'%}">Home</a></li>
+                <li><a href="{% url 'ml_training' %}">ML Training</a></li>
+                <li><a href="{% url 'predict_kyphosis' %}">Predict Kyphosis</a></li>
+                <li><a href="{% url 'index' %}">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Centered Form -->
+    <div class="form-container">
+        <h2>Kyphosis Disease Prediction</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="Age">Age:</label>
+                <input type="number" name="Age" id="Age" required>
+            </div>
+            <div class="form-group">
+                <label for="Number">Number:</label>
+                <input type="number" name="Number" id="Number" required>
+            </div>
+            <div class="form-group">
+                <label for="Start">Start:</label>
+                <input type="number" name="Start" id="Start" required>
+            </div>
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+
+    <!-- Prediction Result -->
+    {% if result %}
+    <div class="result-container">
+        <h2>Prediction Result</h2>
+        <p class="result">{{ result }}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends 'users/xg.html' %}
+{% block contents %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Learning Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        
+        /* Increased results size */
+        .results {
+            margin-top: 20px;
+            font-size: 22px;
+        }
+        .result-item {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 18px;
+        }
+        
+        /* Increased graph size to 100% */
+        .graph {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            width: 100%;
+        }
+        .graph img {
+            width: 100%; /* Now takes full width */
+            max-width: 1200px;
+            height: auto;
+            border-radius: 10px;
+            border: 3px solid #333;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Custom Navigation Bar Styling */
+        #header_wrapper {
+            background-color: #76edf4;
+            height: 3cm;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .navbar-nav {
+            list-style: none;
+            display: flex;
+            padding: 0;
+            margin: 0;
+        }
+        .navbar-nav li {
+            margin: 0 10px;
+        }
+        .navbar-nav li a {
+            color: white !important;
+            background-color: #76edf4 !important;
+            padding: 15px 20px;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        .navbar-nav li a:hover,
+        .navbar-nav li a:active {
+            color: black !important;
+        }
+
+        /* Center the ml_training Heading */
+        .ml-heading {
+            margin-top: 4cm;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Fixed Navigation Bar -->
+    <header id="header_wrapper">
+        <nav>
+            <ul class="navbar-nav">
+                <li><a href="{%url 'AdminHome'%}">Home</a></li>
+                <li><a href="{% url 'ml_training1' %}">ML Training</a></li>
+                <li><a href="{% url 'predict_kyphosis1' %}">Predict Kyphosis</a></li>
+                <li><a href="{% url 'index' %}">Log Out</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- ML Training Heading -->
+    <h1 class="ml-heading">ML Training Results</h1>
+
+    <!-- Model Results -->
+    <div class="results">
+        <div class="result-item">
+            <h2>Accuracy Score</h2>
+            <p>{{ accuracy }}</p>
+        </div>
+        <div class="result-item">
+            <h2>Classification Report</h2>
+            <pre>{{ CR }}</pre>
+        </div>
+    </div>
+
+    <!-- Graphs: Classification Report & Confusion Matrix -->
+    <div class="graph">
+        <div class="classification-report">
+            <h2>Classification Report</h2>
+            <img src="/static/classification_report.jpg" alt="Classification Report">
+        </div>
+        <div class="confusion-matrix">
+            <h2>Confusion Matrix</h2>
+            <img src="/static/confusion_matrix.jpg" alt="Confusion Matrix">
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}
